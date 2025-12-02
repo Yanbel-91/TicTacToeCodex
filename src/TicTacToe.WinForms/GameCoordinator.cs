@@ -1,5 +1,4 @@
 using TicTacToe.Core;
-using TicTacToe.Core.Bots;
 
 namespace TicTacToe.WinForms;
 
@@ -45,7 +44,7 @@ internal sealed class GameCoordinator
 
         if (_session.CurrentPlayer != HumanMark)
         {
-            _view.ShowStatus("Der Bot ist am Zug.");
+            _view.ShowStatus("Der Bot ist am Zug");
             return;
         }
 
@@ -55,7 +54,7 @@ internal sealed class GameCoordinator
         }
         else
         {
-            _view.ShowStatus("Zug nicht möglich. Feld ist belegt.");
+            _view.ShowStatus("Zug nicht möglich. Feld ist belegt");
         }
     }
 
@@ -69,9 +68,9 @@ internal sealed class GameCoordinator
     {
         return snapshot.Result.ResultType switch
         {
-            GameResultType.Draw => "Unentschieden.",
+            GameResultType.Draw => "Unentschieden",
             GameResultType.Win when snapshot.Result.Winner == HumanMark => "Du hast gewonnen!",
-            GameResultType.Win => $"{_activeBot.Name} gewinnt.",
+            GameResultType.Win => $"{_activeBot.Name} gewinnt",
             _ => snapshot.CurrentPlayer == HumanMark ? "Du bist am Zug." : $"{_activeBot.Name} denkt nach..."
         };
     }
@@ -86,7 +85,7 @@ internal sealed class GameCoordinator
         var move = _activeBot.SelectMove(_session.CreateSnapshot());
         if (!_session.TryMakeMove(move))
         {
-            _view.ShowStatus("Bot konnte keinen gültigen Zug finden.");
+            _view.ShowStatus("Bot konnte keinen gültigen Zug finden");
         }
     }
 }
